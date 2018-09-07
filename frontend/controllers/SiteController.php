@@ -34,7 +34,11 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['login', 'error', 'language'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['logout', 'index', 'set-cookie', 'show-cookie'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -97,6 +101,24 @@ class SiteController extends Controller
             ]);
         }
     }
+
+/**
+ * 
+ * Language action to reload the page into
+ * another set language.
+ */    
+    public function actionLanguage()
+{
+	if(isset($_POST['lang'])){
+		Yii::$app->language = $_POST['lang'];
+		$cookie = new yii\web\Cookie([
+			'name' => 'lang',
+			'value' => $_POST['lang']
+		]);
+
+		Yii::$app->getResponse()->getCookies()->add($cookie);
+	}
+}
 
     /**
      * Logs out the current user.
