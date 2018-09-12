@@ -28,6 +28,14 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
+    Yii::$app->language = 'en-US';
+    $languageItem = new cetver\LanguageSelector\items\DropDownLanguageItem([
+     'languages' => [
+         'en-US' => '<span class="flag-icon flag-icon-us"></span> English',
+         'sw-TZ' => '<span class="flag-icon flag-icon-tz"></span> Kiswahili',
+     ],
+     'options' => ['encode' => false],
+    ]);
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
@@ -39,6 +47,7 @@ AppAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
+        $languageItem->toArray(['site/language'])
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

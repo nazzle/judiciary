@@ -11,8 +11,6 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
-    'language'=>'fr_FR',
-    'sourceLanguage'=>'en',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -46,19 +44,6 @@ return [
             ],
         ],
         */
-        'i18n' => [
-        'translations' => [
-            'app' => [
-                'class' => 'yii\i18n\PhpMessageSource',
-                //'basePath' => '@app/messages',
-                'sourceLanguage' => 'en',
-                'fileMap' => [
-                    'app' => 'app.php',
-                    'app/error' => 'error.php'
-                ]
-            ],
-            ],
-            ],
         'MyComponent'=>[
 	'class'=>'frontend\compopnents\MyComponent',
         ],
